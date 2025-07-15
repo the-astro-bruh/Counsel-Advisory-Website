@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Counsel & Advisory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <style>
+        /* Global Box Sizing */
+        html {
+            box-sizing: border-box;
+        }
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        :root {
+            --color-primary: #1e3a8a; /* Azul Marino Profundo para autoridad */
+            --color-secondary: #3b82f6; /* Azul Brillante para acentos y enlaces */
+            --color-dark-bg: #0f172a; /* Azul oscuro casi negro */
+            --color-light-bg: #f3f4f6; /* Gris Muy Claro para secciones de contenido */
+            --color-text-dark: #ffffff; /* Blanco Puro para texto sobre fondos oscuros */
+            --color-text-light: #374151; /* Gris Oscuro para texto principal sobre fondos claros */
+            --color-gray-text: #6b7280; /* Gris Medio para texto secundario */
+            --color-border: #d1d5db; /* Gris Claro para bordes sutiles */
+            --color-button-hover: #1e3a8a; /* Azul más oscuro para hover de botones */
+            --color-icon-hover: #ffffff; /* Blanco para iconos en hover */
+            --color-shadow-primary: rgba(30, 58, 138, 0.3); /* Sombra azul suave */
+            --color-shadow-dark: rgba(0,0,0,0.6); /* Sombra oscura estándar */
+        }
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif; /* Fuente moderna y legible */
+            background: var(--color-primary); /* MODIFICADO: Cambiado a azul primario */
+            color: var(--color-text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Global Typography and Elements */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif; /* Títulos con más impacto */
+            color: var(--color-dark-bg);
+            margin-bottom: 0.8em;
+        }
+        p {
+            margin-bottom: 1em;
+        }
+        a {
+            color: var(--color-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: var(--color-button-hover);
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .text-center { text-align: center; }
+        .bg-primary { background-color: var(--color-primary); color: var(--color-text-dark); }
+        .bg-dark { background-color: var(--color-dark-bg); color: var(--color-text-dark); }
+        .bg-light { background-color: var(--color-light-bg); color: var(--color-text-light); }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            background: var(--color-primary);
+            color: var(--color-text-dark);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px var(--color-shadow-primary);
+            cursor: pointer;
+            border: none;
+            font-size: 1.05em;
+        }
+        .btn:hover {
+            background: var(--color-button-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px var(--color-shadow-primary);
+            color: var(--color-secondary); /* ¡Nuevo! Cambia el color del texto al hacer hover */
+        }
+        .btn i {
+            margin-right: 8px;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--color-secondary);
+            color: var(--color-secondary);
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: var(--color-secondary);
+            color: var(--color-text-dark);
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
+        }
+        .whatsapp-float-main { /* Moved from inline style */
+            background: #25D366;
+            margin-top: 40px;
+        }
+        .whatsapp-float-main:hover {
+            background: #128C7E;
+        }
+
+        /* Top Bar / Header */
+        .top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: var(--color-dark-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--color-text-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none; /* Asegura que no tenga subrayado como un enlace */
+            transition: transform 0.1s ease-out; /* Transición para el efecto de click */
+        }
+        .logo span {
+            color: var(--color-secondary);
+        }
+        .logo:active {
+            transform: scale(0.98); /* Efecto de escala al hacer click */
+        }
+        .nav-inline {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-inline a {
+            color: var(--color-text-dark);
+            font-weight: 500;
+            font-size: 1.0em;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .nav-inline a:hover {
+            background-color: var(--color-primary);
+            color: var(--color-text-dark);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 25px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 200;
+        }
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: var(--color-secondary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-text-dark);
+            overflow: hidden;
+        }
+
+        .hero-background-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            animation: imageSlideshow 24s infinite; /* 4 images * 6s each = 24s total animation */
+        }
+
+        /* Individual animation delays for each slide */
+        .hero-slide:nth-child(1) {
+            background-image: url('img/bg_main_1.jpg');
+            animation-delay: 0s;
+        }
+        .hero-slide:nth-child(2) {
+            background-image: url('img/bg_main_2.jpg'); /* Placeholder for second image */
+            animation-delay: 6s;
+        }
+        .hero-slide:nth-child(3) {
+            background-image: url('img/bg_main_3.jpg'); /* Placeholder for third image */
+            animation-delay: 12s;
+        }
+        .hero-slide:nth-child(4) {
+            background-image: url('img/bg_main_4.jpg'); /* Placeholder for fourth image */
+            animation-delay: 18s;
+        }
+
+        @keyframes imageSlideshow {
+            0% { opacity: 0; transform: scale(1); } /* Start at normal scale */
+            5% { opacity: 1; transform: scale(1.05); } /* Fade in and zoom in slightly */
+            20% { opacity: 1; transform: scale(1.1); } /* Continue zoom in effect */
+            25% { opacity: 0; transform: scale(1.1); } /* Fade out while zoomed in */
+            100% { opacity: 0; } /* Ensure it's hidden until its next cycle */
+        }
+
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6); /* Oscurece la imagen para legibilidad */
+            z-index: 2; /* Ensure overlay is above slides but below content */
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 20px;
+        }
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            color: var(--color-text-dark);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+        .hero-content p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            color: rgba(255,255,255,0.9);
+        }
+        .hero-buttons .btn {
+            margin: 0 10px;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        section h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: var(--color-primary);
+        }
+        section p {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* Services Section */
+        #services {
+            position: relative; /* Needed for pseudo-element overlay */
+            background-image: url('img/bg_services.jpg'); /* New background image */
+            background-size: cover;
+            background-position: center;
+            background-color: var(--color-dark-bg); /* Fallback */
+            color: var(--color-text-dark); /* Text color for dark background */
+            padding-bottom: 120px; /* Increased separation */
+            overflow: hidden; /* Ensure content doesn't overflow if image is too large */
+        }
+        #services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6); /* Dark overlay for text readability */
+            z-index: 1;
+        }
+        /* Content inside #services must be relative and higher z-index to appear above overlay */
+        #services .container {
+            position: relative;
+            z-index: 2;
+        }
+        #services h2, #services p { /* Ensure text color is white on dark background */
+            color: var(--color-text-dark);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .service-item {
+            position: relative; /* Ensure service items are above overlay */
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.1); /* Slightly transparent background for cards */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for definition */
+            /* Added inset shadow */
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.5), 0 8px 20px rgba(0,0,0,0.3);
+            color: var(--color-text-dark);
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            border-bottom: 5px solid var(--color-primary);
+        }
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.6), 0 12px 25px rgba(0,0,0,0.2); /* Stronger inset on hover */
+        }
+        .service-item i {
+            font-size: 3em;
+            color: var(--color-secondary);
+            margin-bottom: 20px;
+            display: block;
+        }
+        .service-item h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: var(--color-text-dark);
+        }
+        .service-item p {
+            font-size: 0.95em;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Testimonials/Clients Section */
+        #testimonials {
+            position: relative;
+            background-image: url('img/bg_testimonials.jpg'); /* New background image */
+            background-size: cover;
+            background-position: center;
+            background-color: var(--color-dark-bg); /* Fallback */
+            color: var(--color-text-dark);
+            overflow: hidden;
+            padding: 80px 20px; /* Keep existing section padding */
+        }
+        #testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6); /* Dark overlay for text readability */
+            z-index: 1;
+        }
+        #testimonials .container {
+            position: relative;
+            z-index: 2;
+        }
+        #testimonials h2, #testimonials p {
+            color: var(--color-text-dark);
+        }
+        .testimonial-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 20px;
+            gap: 20px;
+            margin-top: 50px;
+        }
+        .testimonial-card {
+            flex: 0 0 auto;
+            width: 400px; /* Ancho fijo para las tarjetas */
+            scroll-snap-align: start;
+            background: rgba(255, 255, 255, 0.1); /* Make cards slightly transparent white */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4); /* Stronger shadow for contrast */
+            color: var(--color-text-dark); /* Ensure text inside card is visible */
+            padding: 30px;
+            border-radius: 10px;
+            text-align: left;
+            border-top: 5px solid var(--color-secondary);
+        }
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.05em;
+            color: rgba(255,255,255,0.9); /* Lighter text for card content */
+        }
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--color-secondary); /* Keep accent color for author name */
+            font-size: 1.1em;
+        }
+        .testimonial-slider::-webkit-scrollbar {
+            height: 8px;
+        }
+        .testimonial-slider::-webkit-scrollbar-thumb {
+            background-color: var(--color-secondary);
+            border-radius: 4px;
+        }
+        .testimonial-slider::-webkit-scrollbar-track {
+            background-color: var(--color-border);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--color-dark-bg);
+            color: var(--color-text-dark);
+            padding: 80px 20px;
+        }
+        #contact h2 {
+            color: var(--color-text-dark);
+        }
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            padding: 25px; /* Default padding */
+            border-radius: 8px;
+            width: 280px; /* Default width for desktop */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .contact-item i {
+            font-size: 2.5em;
+            color: var(--color-secondary);
+            margin-bottom: 15px;
+        }
+        .contact-item h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            color: var(--color-text-dark);
+        }
+        .contact-item p, .contact-item a {
+            color: rgba(255,255,255,0.8);
+            font-size: 1em;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-dark-bg);
+            color: var(--color-gray-text);
+            padding: 30px 20px;
+            font-size: 0.9em;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            /* New styles for the footer content */
+            padding-top: 50px; /* Add more padding at the top for the new content */
+        }
+
+        .footer-main-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 50px auto; /* Center and add space below */
+            text-align: left; /* Align text within columns */
+        }
+
+        .footer-column {
+            flex: 1; /* Allow columns to grow and shrink */
+            min-width: 280px; /* Minimum width for columns before wrapping */
+            padding: 0 15px; /* Add some horizontal padding */
+        }
+
+        .footer-column h3 {
+            color: var(--color-text-dark);
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--color-secondary); /* Accent underline */
+            padding-bottom: 10px;
+            display: inline-block; /* Ensure border only spans text */
+        }
+
+        .footer-column p {
+            color: var(--color-gray-text);
+            font-size: 1em;
+            line-height: 1.7;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: var(--color-gray-text);
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--color-secondary);
+        }
+
+        .footer-contact-info p {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            color: var(--color-gray-text);
+        }
+
+        .footer-contact-info p i {
+            margin-right: 10px;
+            color: var(--color-secondary);
+            font-size: 1.2em;
+            margin-top: 4px; /* Align icon better with text */
+        }
+        .footer-contact-info a {
+             color: var(--color-gray-text); /* Ensure links in contact info are grey */
+        }
+        .footer-contact-info a:hover {
+            color: var(--color-secondary);
+        }
+
+
+        .footer-social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social-icons a {
+            color: var(--color-gray-text);
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social-icons a:hover {
+            color: var(--color-secondary);
+        }
+        /* End New Footer Styles */
+
+        /* Original Social Icons (moved and replaced) */
+        /* .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            color: var(--color-gray-text);
+            font-size: 1.8em;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: var(--color-secondary);
+        } */
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background: #25D366; /* WhatsApp Green */
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            z-index: 1000;
+        }
+        .whatsapp-float:hover {
+            background: #128C7E; /* Darker Green */
+            transform: translateY(-3px);
+        }
+        .whatsapp-float i {
+            font-size: 1.5em;
+        }
+
+        /* Back to Top Button */
+        #back-to-top-btn {
+            display: none;
+            position: fixed;
+            bottom: 90px; /* Above WhatsApp button */
+            right: 20px;
+            z-index: 999;
+            font-size: 20px;
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.5s ease;
+            opacity: 0;
+            justify-content: center;
+            align-items: center;
+        }
+        #back-to-top-btn.show {
+            display: flex;
+            opacity: 1;
+        }
+        #back-to-top-btn:hover {
+            background-color: var(--color-button-hover);
+            transform: translateY(-3px);
+        }
+
+        /* Preloader Styles */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-dark-bg) 0%, rgba(30, 58, 138, 0.9) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 1s ease-out, visibility 1s ease-out;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none; /* Disable interaction when hidden */
+        }
+
+        .loader {
+            border: 8px solid rgba(255, 255, 255, 0.2);
+            border-top: 8px solid var(--color-secondary);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            animation: spin 1.5s linear infinite;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .loading-percentage {
+            color: var(--color-text-dark);
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 20px;
+            position: relative; /* Needed for pseudo-element background */
+            width: 120px; /* Width of the percentage bar */
+            height: 30px;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-percentage::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: var(--percentage-width, 0%); /* Custom property for animation */
+            height: 100%;
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            transition: width 0.5s ease-out;
+            z-index: 0;
+        }
+
+        .loading-percentage span {
+            position: relative;
+            z-index: 1;
+        }
+
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            html { font-size: 14px; }
+            .top-bar { padding: 15px 20px; }
+            .nav-inline {
+                position: fixed;
+                top: 60px; /* Adjust based on top-bar height */
+                left: 0;
+                width: 100%;
+                font-size: 1.1em;
+                background: var(--color-dark-bg);
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                padding: 20px 0;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+            .nav-inline.show {
+                transform: translateX(0);
+            }
+            .hamburger { display: flex; }
+            .logo { font-size: 1.1em; }
+
+            .hero-content h1 { font-size: 2.5em; }
+            .hero-content p { font-size: 1em; }
+            .hero-buttons .btn { margin: 10px 0; width: 80%; max-width: 300px; }
+
+            section { padding: 50px 15px; }
+            section h2 { font-size: 2em; }
+            section p { font-size: 1em; }
+
+            .services-grid { grid-template-columns: 1fr; }
+            .service-item { padding: 25px; }
+            .service-item i { font-size: 2.5em; }
+            .service-item h3 { font-size: 1.5em; }
+
+            .testimonial-slider {
+                flex-direction: row;
+                scroll-snap-type: x mandatory;
+                overflow-x: scroll;
+            }
+            .testimonial-card { width: 90vw; max-width: 350px; }
+            .contact-info { flex-direction: column; align-items: center; }
+            .contact-item {
+                width: 100%; /* Take full width of parent */
+                max-width: 300px; /* Cap at 300px */
+                padding: 20px; /* Adjusted padding for mobile */
+            }
+
+            .whatsapp-float { padding: 12px 18px; font-size: 1em; }
+            .whatsapp-float i { font-size: 1.3em; }
+
+            /* Footer Responsive */
+            .footer-main-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-column {
+                padding: 0;
+                margin-bottom: 30px;
+            }
+            .footer-column h3 {
+                display: block; /* Ensure full width for centering */
+                text-align: center;
+            }
+            .footer-contact-info p {
+                justify-content: center; /* Center contact items horizontally */
+            }
+            .footer-social-icons {
+                justify-content: center; /* Center social icons */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 2em; }
+            .hero-content p { font-size: 0.9em; }
+            section h2 { font-size: 1.8em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader">
+        <div class="loader">
+            </div>
+        <div class="loading-percentage"><span id="percentage-value">0%</span></div>
+    </div>
+
+    <header class="top-bar">
+        <a href="#" class="logo">Counsel<span> & Advisory</span></a>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        <nav class="nav-inline" id="nav">
+            <a href="#services">Servicios</a>
+            <a href="#about">Sobre Nosotros</a>
+            <a href="#testimonials">Casos de Éxito</a>
+            <a href="#contact">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section" id="hero-section">
+            <div class="hero-background-slideshow">
+                <div class="hero-slide"></div>
+                <div class="hero-slide"></div>
+                <div class="hero-slide"></div>
+                <div class="hero-slide"></div>
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <h1>Tu Defensor Legal de Confianza</h1>
+                <p>Ofrecemos soluciones legales expertas con dedicación y profesionalismo. Estamos aquí para proteger tus derechos e intereses.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn"><i class="fa-solid fa-phone"></i> Consulta Gratuita</a>
+                    <a href="#services" class="btn btn-outline"><i class="fa-solid fa-gavel"></i> Nuestras Áreas</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2>Nuestras Áreas de Práctica</h2>
+                <p>Contamos con un equipo de expertos en diversas ramas del derecho, listos para brindarte la asesoría y representación que necesitas.</p>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                        <h3>Derecho Civil</h3>
+                        <p>Asesoramiento y litigio en contratos, propiedades, herencias, responsabilidades civiles y disputas familiares.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fa-solid fa-user-lock"></i>
+                        <h3>Derecho Penal</h3>
+                        <p>Defensa y acusación en casos de delitos, garantizando un proceso justo y la protección de tus derechos.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <h3>Derecho Corporativo</h3>
+                        <p>Constitución de empresas, contratos mercantiles, fusiones, adquisiciones y compliance legal para tu negocio.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fa-solid fa-users-line"></i>
+                        <h3>Derecho Laboral</h3>
+                        <p>Asesoría en relaciones laborales, despidos, indemnizaciones, contratos de trabajo y litigios laborales.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fa-solid fa-land-mine-on"></i>
+                        <h3>Derecho Inmobiliario</h3>
+                        <p>Compra-venta de propiedades, arrendamientos, litigios de tierras y desarrollo de proyectos inmobiliarios.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fa-solid fa-car-crash"></i>
+                        <h3>Derecho de Tránsito</h3>
+                        <p>Asistencia legal en accidentes de tránsito, multas, licencias y reclamaciones por daños y perjuicios.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="bg-dark">
+            <div class="container">
+                <h2>Sobre Nosotros</h2>
+                <p>Somos un bufete de abogados con años de experiencia, comprometidos con la excelencia y la ética. Nuestra misión es ofrecer soluciones legales efectivas y personalizadas, construyendo relaciones de confianza duraderas con nuestros clientes.</p>
+                <a href="#contact" class="btn btn-outline">Conoce a Nuestro Equipo</a>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <h2>Casos de Éxito y Testimonios</h2>
+                <p>La satisfacción de nuestros clientes es nuestra mejor carta de presentación. Escucha lo que tienen que decir sobre nuestra labor.</p>
+                <div class="testimonial-slider">
+                    <div class="testimonial-card">
+                        <p>"El equipo de Abogados & Asociados manejó mi caso con una profesionalidad y eficiencia impecables. Me sentí apoyado en todo momento."</p>
+                        <div class="testimonial-author">- María G., Cliente Satisfecha</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Su asesoría fue clave para la resolución de mi conflicto. Son expertos en su área y con un trato humano excepcional."</p>
+                        <div class="testimonial-author">- Juan P., Cliente Corporativo</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Necesitaba una solución rápida y la obtuve gracias a su dedicación. Altamente recomendados por su compromiso y resultados."</p>
+                        <div class="testimonial-author">- Luis F., Cliente Particular</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="bg-primary">
+            <div class="container">
+                <h2>Contáctanos Hoy Misamo</h2>
+                <p>Estamos listos para escucharte y ofrecerte la mejor asesoría legal. No dudes en comunicarte con nosotros.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <h3>Nuestra Oficina</h3>
+                        <p>Avenida Balboa, Ciudad de Panamá</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <h3>Envíanos un Email</h3>
+                        <a href="mailto:info@abogadosyasociados.com">info@abogadosyasociados.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-phone-alt"></i>
+                        <h3>Llámanos</h3>
+                        <p>+507 6879-1122</p>
+                    </div>
+                </div>
+                <a href="https://wa.me/yourphonenumber" target="_blank" class="btn whatsapp-float-main"><i class="fab fa-whatsapp"></i> Chatea con nosotros</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center bg-dark">
+        <div class="footer-main-content">
+            <div class="footer-column about-column">
+                <h3>Sobre Nosotros</h3>
+                <p>En Abogados & Asociados, estamos comprometidos con la excelencia legal y la defensa de tus derechos. Contactamos para soluciones efectivas.</p>
+            </div>
+            <div class="footer-column quick-links-column">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#about">Quiénes Somos</a></li>
+                    <li><a href="#about">Nuestro Equipo</a></li>
+                    <li><a href="#testimonials">Testimonios</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-column contact-info-column">
+                <h3>Información de Contacto</h3>
+                <div class="footer-contact-info">
+                    <p><i class="fa-solid fa-location-dot"></i> Avenida Balboa, Ciudad de Panamá</p>
+                    <p><i class="fa-solid fa-phone"></i> +507 234 5678</p>
+                    <p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@abogadosyasociados.com">info@abogadosyasociados.com</a></p>
+                </div>
+                <div class="footer-social-icons">
+                    <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/in/leonel-e-rodr%C3%ADguez-s-66390335b/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <p>© 2025 Abogados & Asociados. Todos los derechos reservados.</p>
+        </footer>
+
+    <a href="https://wa.me/yourphonenumber" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <button id="back-to-top-btn"><i class="fas fa-arrow-up"></i></button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const nav = document.getElementById('nav');
+            const backToTopBtn = document.getElementById('back-to-top-btn');
+            const preloader = document.querySelector('.preloader');
+            const percentageValue = document.getElementById('percentage-value');
+            const loadingPercentageDiv = document.querySelector('.loading-percentage');
+
+            // Simulate loading percentage
+            let currentPercentage = 0;
+            const interval = setInterval(() => {
+                if (currentPercentage < 100) {
+                    currentPercentage += 1;
+                    percentageValue.textContent = `${currentPercentage}%`;
+                    loadingPercentageDiv.style.setProperty('--percentage-width', `${currentPercentage}%`);
+                } else {
+                    clearInterval(interval);
+                }
+            }, 30); // Adjust speed of percentage update
+
+            // Hide preloader when the entire page is loaded
+            window.addEventListener('load', () => {
+                // Ensure percentage reaches 100% before hiding
+                currentPercentage = 100;
+                percentageValue.textContent = '100%';
+                loadingPercentageDiv.style.setProperty('--percentage-width', '100%');
+
+                setTimeout(() => {
+                    preloader.classList.add('hidden');
+                }, 500); // Small delay to show 100%
+            });
+
+            // Toggle mobile navigation
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                nav.classList.toggle('show');
+            });
+
+            // Close mobile nav on link click
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('show');
+                });
+            });
+
+            // Smooth scroll for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    // Special handling for the logo link to ensure it always goes to the very top
+                    if (targetId === '#') {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+
+            // Show/hide back to top button
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) { // Show button after scrolling 300px down
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+
+            // Scroll to top on button click
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
